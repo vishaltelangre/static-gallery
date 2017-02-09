@@ -1,0 +1,30 @@
+Title:
+# This is comment which starts with '#'
+Yellow Rose
+# Overrides image's file name
+--
+Description:
+Feel Yellow!
+--
+Time Taken:
+# Overrides time from EXIF data
+--
+Place:
+# No default place
+Aurangabad, India
+--
+Albums:
+# Defaults to 'My Best Clicks'
+# More albums can be specified separated by comma or newline
+Flowers, Nature
+Travel
+--
+Category:
+# Defaults to 'Uncategorized'
+Macro
+--
+Tags:
+# No default tag
+# More tags can be specified separated by comma or newline
+Flowers, Macro, Travel, Rose, Yellow
+--
