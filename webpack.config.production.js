@@ -4,7 +4,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-  entry: './src/index',
+  entry: './frontend/main',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -32,7 +32,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loaders: ['babel'],
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'frontend')
       }
     ]
   }

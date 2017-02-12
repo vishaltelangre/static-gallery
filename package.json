@@ -2,7 +2,12 @@
   "name": "static-gallery",
   "version": "0.0.1",
   "description": "A tool to easily create static gallery website by copy-pasting photographs",
-  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "start": "npm run clean && node lib/generator.js && node devServer.js",
+    "build": "npm run clean && node lib/generator.js && BABEL_ENV=production ./node_modules/.bin/webpack --config webpack.config.production.js && cp frontend/index.html dist/",
+    "lint": "./node_modules/.bin/eslint ."
+  },
   "author": "Vishal Telangre",
   "license": "MIT",
   "devDependencies": {
@@ -15,13 +20,28 @@
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
     "babel-runtime": "^6.22.0",
+    "classnames": "^2.2.5",
+    "copy-webpack-plugin": "^4.0.1",
     "eslint": "^3.15.0",
     "eslint-plugin-react": "^6.9.0",
     "exif": "^0.6.0",
+    "fractional": "^1.0.0",
+    "isomorphic-fetch": "^2.2.1",
+    "mkdirp": "^0.5.1",
+    "node-uuid": "^1.4.7",
+    "promise": "^7.1.1",
     "react": "^15.4.2",
+    "react-addons-pure-render-mixin": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-redux": "^5.0.2",
     "react-transform-hmr": "^1.0.4",
-    "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.3.0"
+    "redux": "^3.6.0",
+    "sharp": "^0.17.2",
+    "underscore": "^1.8.3",
+    "webpack": "^1.8.4",
+    "webpack-dev-server": "^1.8.0"
+  },
+  "dependencies": {
+    "immutable": "^3.8.1"
   }
 }
