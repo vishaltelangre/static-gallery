@@ -16,10 +16,11 @@ export default class ImageList extends React.Component {
   }
 
   render() {
-    return <section className="main">
-      <ul className="image-list">
+    return <section>
+      <h1>Vishal Telangre Photography</h1>
+      <ul className="imageList">
         {this.getItems().map(image =>
-          <ImageItem key={image.get('id')} image={image}/>
+          <ImageItem key={image.get('slug')} image={image}/>
         )}
       </ul>
     </section>

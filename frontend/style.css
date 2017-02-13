@@ -1,0 +1,159 @@
+body {
+  font-family: sans-serif;
+  font-weight: 100;
+  color: #fff;
+}
+
+div, p, h1, h2, ul {
+  padding: 0;
+  margin: 0;
+}
+
+.clearfix {
+  clear: both;
+}
+
+h1 {
+  font-weight: 100;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.imageList {
+  list-style: none;
+  margin-left: 100px;
+}
+
+.imageListItem {
+  width: 256px;
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  position: relative;
+  text-shadow: 0 1px 0 #000;
+  color: rgba(255, 255, 255, 0.6);
+  transition-timing-function: ease-in;
+  border-radius: 5px;
+  transition: 0.4s;
+}
+
+.imageListItem:hover {
+  color: #fff;
+  box-shadow: -1px -3px 20px 0 #333;
+}
+
+.imageListItem img {
+  border-radius: 5px;
+}
+
+.imageListItem .captionStrip {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.imageListItem .captionContent {
+  font-size: 12px;
+  lineHeight: 20px;
+  padding: 2px 5px;
+}
+
+.imageDetail .navigation {
+  height: 54px;
+  padding: 10px 0 0;
+}
+
+.navigation .wrap {
+  width: 64px;
+  height: 54px;
+  display: inline-block;
+  margin-right: 20px;
+  float: left;
+}
+
+.wrap.right {
+  float: right;
+}
+
+.navigation .backToList {
+  height: 54px;
+  line-height: 44px;
+  float: left;
+}
+
+.backToList a {
+  color: #fff;
+  text-decoration: underline;
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+.navigation a {
+  display: block;
+}
+
+.navigation img {
+  width: 100%;
+  height: auto;
+}
+
+.imageDetail .imageLarge, .imageDetail .info {
+  float: left;
+}
+.imageLarge img {
+  width: 100%;
+  height: auto
+}
+
+.imageDetail .info {
+  margin: 5px;
+  overflow-y: scroll;
+}
+
+.info h2 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.info ul {
+  list-style: none;
+  margin: 0;
+}
+
+.info li.seperator {
+  border-bottom: 1px dashed #333;
+  margin: 5px 0 0;
+}
+
+.info label {
+  font-size: 12px;
+  color: #777;
+  font-weight: 100;
+}
+
+.info label strong {
+  color: #aaa;
+  font-weight: 400;
+}
+
+.info li p, .info li span {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.info ul.exif {
+  padding-left:5px;
+}
+
+.exif label {
+  font-size: 11px;
+}
+
+.exif li p, .exif li span {
+  font-size: 12px;
+}

@@ -33,6 +33,11 @@ module.exports = {
         test: /\.jsx?$/,
         loaders: ['babel'],
         include: path.join(__dirname, 'frontend')
+      },
+      {
+        test: /\.(css|scss)$/,
+        use: [ 'css-loader', 'sass-loader' ],
+        include: path.join(__dirname, 'frontend')
       }
     ]
   }
