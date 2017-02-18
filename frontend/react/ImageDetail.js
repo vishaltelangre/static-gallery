@@ -1,10 +1,10 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {connect} from 'react-redux';
-import * as actionCreators from './action_creators';
+import * as actionCreators from '../redux/action_creators'
 import { Link } from 'react-router'
-import _ from 'underscore'
 import {List} from 'immutable'
+import {InfoItem} from './InfoItem'
 
 class ImageDetail extends React.Component {
   constructor(props) {
@@ -13,8 +13,8 @@ class ImageDetail extends React.Component {
   }
 
   getItems() {
-    if (this.props.images) {
-      return this.props.images
+    if (this.props.items) {
+      return this.props.items
     }
     return List([])
   }
@@ -22,7 +22,7 @@ class ImageDetail extends React.Component {
   getPrevNextItem() {
     const { slug } = this.props.params
     const items = this.getItems()
-    const currentItemIndex = items.findIndex(item => item.get('slug') == slug);
+    const currentItemIndex = items.findIndex(item => item.get('slug') == slug)
     let prevItem = null
     let nextItem = null
 
@@ -48,41 +48,46 @@ class ImageDetail extends React.Component {
 
     return (
       <div className="imageDetail">
-      <div className="navigation">
-        <div className="wrap">
-          {prevItem ? <Link to={`/${prevItem.get('slug')}`} title={`Previous ← "${prevItem.get('title')}"`}>
-                      <img src={`images/${prevItem.get('images').get('small')}`}
-                           alt={`images/${prevItem.get('title')}`} />
-                    </Link>
-                  : null
-        }
+        <div className="navigation">
+          <div className="wrap">
+            { prevItem ? <Link to={`/${prevItem.get('slug')}`}
+                               title={`Previous ← "${prevItem.get('title')}"`}>
+                            <img src={`images/${prevItem.get('images').get('small')}`}
+                                 alt={`images/${prevItem.get('title')}`} />
+                         </Link>
+                       : null
+            }
+          </div>
+          <div className="backToList"
+               style={{marginLeft: (document.body.clientWidth - 300)/2}}>
+            <Link to="/">Back to Home</Link>
+          </div>
+          <div className="wrap right">
+            {nextItem ? <Link to={`/${nextItem.get('slug')}`}
+                              title={`Next → "${nextItem.get('title')}"`}>
+                          <img src={`images/${nextItem.get('images').get('small')}`}
+                               alt={`images/${nextItem.get('title')}`} />
+                        </Link>
+                      : null}
+          </div>
         </div>
-        <div className="backToList" style={{marginLeft: (document.body.clientWidth - 300)/2}}>
-          <Link to="/">Back to Home</Link>
-        </div>
-        <div className="wrap right">
-          {nextItem ? <Link to={`/${nextItem.get('slug')}`}
-                            title={`Next → "${nextItem.get('title')}"`}>
-                        <img src={`images/${nextItem.get('images').get('small')}`}
-                             alt={`images/${nextItem.get('title')}`} />
-                      </Link>
-                    : null}
-        </div>
-      </div>
 
       <div>
-        <div className="imageLarge" style={{width: document.body.clientWidth - (document.body.clientWidth*0.3)}}>
+        <div className="imageLarge"
+             style={{width: document.body.clientWidth - (document.body.clientWidth*0.3)}}>
           <img src={`images/${image.get('images').get('large')}`} />
         </div>
-        <div className="info" style={{width: document.body.clientWidth*0.28, maxHeight: (window.innerHeight - 64), marginLeft: document.body.clientWidth*0.01}}>
+        <div className="info" style={{ width: document.body.clientWidth*0.28,
+                                       maxHeight: (window.innerHeight - 64),
+                                       marginLeft: document.body.clientWidth*0.01 }}>
           <h2>{image.get('title')}</h2>
           <ul>
-            <li className="seperator"></li>
+            <li className="seperator" />
             <InfoItem props={{label: 'Description', value: image.get('description')}} />
             <InfoItem props={{label: 'Place', value: image.get('place')}} />
             <InfoItem props={{label: 'Category', value: image.get('category')}} />
             <InfoItem props={{label: 'Tags', value: image.get('tags').join(', ')}} />
-            <li className="seperator"></li>
+            <li className="seperator" />
             <li>
               <label><strong>EXIF</strong></label>
               <ul className="exif">
@@ -106,25 +111,15 @@ class ImageDetail extends React.Component {
             </li>
           </ul>
         </div>
-        <div className="clearfix"></div>
+        <div className="clearfix" />
       </div>
     </div>
     )
   }
 }
 
-const InfoItem = ({props}) =>
-  props.value ? <li>
-                  <label>{props.label}:</label>
-                  {props.inline ? <span> {props.value}</span>
-                                : <p>{props.value}</p>}
-                </li>
-              : null
-
 function mapStateToProps(state) {
-  return {
-    images: state.get('images')
-  };
+  return { items: state.get('items') }
 }
 
-export const ImageDetailContainer = connect(mapStateToProps, actionCreators)(ImageDetail);
+export const ImageDetailContainer = connect(mapStateToProps, actionCreators)(ImageDetail)

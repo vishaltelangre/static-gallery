@@ -9,6 +9,25 @@ div, p, h1, h2, ul {
   margin: 0;
 }
 
+ul {
+  list-style: none;
+}
+
+img {
+  border: none;
+}
+
+select {
+  background: #000;
+  color: #555;
+  text-decoration: none;
+  border: 1px solid #555;
+}
+
+select:focus {
+  outline: none;
+}
+
 .clearfix {
   clear: both;
 }
@@ -19,21 +38,43 @@ h1 {
   text-align: center;
 }
 
-.imageList {
-  list-style: none;
-  margin-left: 100px;
+.filterBar {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.imageListItem {
-  width: 256px;
+.filterBar .filter {
+  width: 100px;
+  text-align: center;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.filter span {
+  font-size: 12px;
+  color: #444;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.filter select {
+  width: 100%;
+}
+
+a.imageListItem {
   display: inline-block;
   margin: 0 10px 10px 0;
   position: relative;
+  width: 256px;
   text-shadow: 0 1px 0 #000;
+  border-radius: 5px;
   color: rgba(255, 255, 255, 0.6);
   transition-timing-function: ease-in;
-  border-radius: 5px;
   transition: 0.4s;
+}
+
+.imageListItem:nth-child(4) {
+  margin-right: 0;
 }
 
 .imageListItem:hover {
@@ -53,7 +94,7 @@ h1 {
   left: 0;
   width: 100%;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.7);
   text-align: center;
 }
 
@@ -72,11 +113,13 @@ h1 {
   width: 64px;
   height: 54px;
   display: inline-block;
-  margin-right: 20px;
+  margin-left: 20px;
   float: left;
 }
 
 .wrap.right {
+  margin-left: 0;
+  margin-right: 20px;
   float: right;
 }
 
