@@ -47,9 +47,3 @@ export default class ImageList extends React.Component {
     </section>)
   }
 }
-
-// ImageList.PropTypes = {
-//   items: React.PropTypes.object,
-//   filterType: React.PropTypes.string,
-//   filterValue: React.PropTypes.string
-// }

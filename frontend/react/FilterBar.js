@@ -61,11 +61,3 @@ export default class FilterBar extends React.Component {
     </section>)
   }
 }
-
-// FilterBar.propTypes = {
-//   changeFilterType: React.PropTypes.func.isRequired,
-//   changeFilterValue: React.PropTypes.func.isRequired,
-//   filters: React.PropTypes.any,
-//   filterType: React.PropTypes.string,
-//   filterValue: React.PropTypes.string,
-// }

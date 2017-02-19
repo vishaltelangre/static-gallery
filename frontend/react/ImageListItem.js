@@ -21,7 +21,3 @@ export default class ImageListItem extends React.Component {
     )
   }
 }
-
-// ImageListItem.PropTypes = {
-//   image: React.PropTypes.any,
-// }
