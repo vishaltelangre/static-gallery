@@ -21,7 +21,9 @@ fetch('data.json')
   store.dispatch({
     type: 'SET_STATE',
     state: {
-      items: response.items,
+      items: response.items.sort((left, right) => {
+        return left.exif.createDate > right.exif.createDate;
+      }),
       filters: response.filters,
       filterType: 'All',
       filterValue: 'All',

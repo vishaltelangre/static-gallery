@@ -2,6 +2,7 @@ import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {connect} from 'react-redux';
 import * as actionCreators from '../redux/action_creators'
+import {filteredItems} from '../redux/reducer'
 import { Link } from 'react-router'
 import {List} from 'immutable'
 import {InfoItem} from './InfoItem'
@@ -12,16 +13,9 @@ class ImageDetail extends React.Component {
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
   }
 
-  getItems() {
-    if (this.props.items) {
-      return this.props.items
-    }
-    return List([])
-  }
-
   getPrevNextItem() {
     const { slug } = this.props.params
-    const items = this.getItems()
+    const items = this.props.filteredItems
     const currentItemIndex = items.findIndex(item => item.get('slug') == slug)
     let prevItem = null
     let nextItem = null
@@ -40,7 +34,7 @@ class ImageDetail extends React.Component {
   render() {
     const { slug } = this.props.params
     const {prevItem, nextItem} = this.getPrevNextItem()
-    const image = this.getItems().find(item => item.get('slug') == slug)
+    const image = this.props.filteredItems.find(item => item.get('slug') == slug)
 
     if (!image) return null
 
@@ -119,7 +113,11 @@ class ImageDetail extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { items: state.get('items') }
+  return { items: state.get('items'),
+           filteredItems: filteredItems(state),
+           filters: state.get('filters'),
+           filterType: state.get('filterType'),
+           filterValue: state.get('filterValue') }
 }
 
 export const ImageDetailContainer = connect(mapStateToProps, actionCreators)(ImageDetail)
